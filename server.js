@@ -18,10 +18,10 @@ const fs = require('fs');
 const request = require('request');
 
 // Replace these params based on your own configuration
-const APPLE_PAY_CERTIFICATE_PATH = "./certs/apple-pay-cert.pem";
-const MERCHANT_IDENTIFIER = "merchant.com.agektmr.payment";
-const MERCHANT_DOMAIN = "web-payment-apis.appspot.com";
-const MERCHANT_DIAPLAY_NAME = "web-payment-apis.appspot.com";
+const APPLE_PAY_CERTIFICATE_PATH = "./certs/merchant_identity.pem";
+const MERCHANT_IDENTIFIER = "K7MCLU759J.merchant.com.electronicsgalore";
+const MERCHANT_DOMAIN = "pay.alexrodri.com";
+const MERCHANT_DIAPLAY_NAME = "pay.alexrodri.com";
 
 try {
   fs.accessSync(APPLE_PAY_CERTIFICATE_PATH);
@@ -48,7 +48,7 @@ app.use(express.static(path.join(__dirname, 'demo'), {
 
 app.get('/.well-known/apple-developer-merchantid-domain-association.txt', (req, res) => {
   let file;
-  if (req.hostname === 'web-payment-apis.appspot.com') {
+  if (req.hostname === 'pay.alexrodri.com') {
     // https://web-payment-apis.appspot.com/.well-known/apple-developer-merchantid-domain-association.txt
     file = fs.readFileSync('./demo/well-known/production.txt');
   } else {
